@@ -1,0 +1,5 @@
+# Local only: fonts are downloaded for tools/build.py, previews are screenshots.
+tools/fonts/
+.venv/
+preview/
+.DS_Store
