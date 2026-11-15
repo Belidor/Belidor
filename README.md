@@ -11,16 +11,6 @@ Most of that code is private, so this page lists what I have built. Work history
 
 ## Live projects
 
-### [GTA VI Countdown for Garmin](https://gta6-garmin.belidor.cc)
-
-<a href="https://gta6-garmin.belidor.cc"><img src="assets/gta6.jpg" width="100%" alt="A Garmin Forerunner 965 showing the GTA VI countdown watch face in front of a Vice City sunset"></a>
-
-A free watch face, glance and app for Garmin watches that tick down to the GTA VI release on 19 November 2026: days, hours, minutes and seconds, with a quiet always-on mode on AMOLED screens. Builds for 123 watch models, a landing page with a per-watch installer, and both apps in the Connect IQ Store.
-
-`Monkey C` `Connect IQ` `GitHub Pages`
-
-Site: [gta6-garmin.belidor.cc](https://gta6-garmin.belidor.cc). Source: [Belidor/gta6-countdown](https://github.com/Belidor/gta6-countdown), MIT.
-
 ### [TriSplits](https://triathlon-calculator.online)
 
 <a href="https://triathlon-calculator.online"><img src="assets/trisplits.jpg" width="100%" alt="TriSplits: distance presets at the top, swim and transition pace sliders on the left, the estimated finish time on the right"></a>
@@ -30,6 +20,16 @@ Finish-time and split estimator for every triathlon distance, in six languages. 
 `Next.js` `TypeScript` `Vitest`
 
 Site: [triathlon-calculator.online](https://triathlon-calculator.online).
+
+### [GTA VI Countdown for Garmin](https://gta6-garmin.belidor.cc)
+
+<a href="https://gta6-garmin.belidor.cc"><img src="assets/gta6.jpg" width="100%" alt="A Garmin Forerunner 965 showing the GTA VI countdown watch face in front of a Vice City sunset"></a>
+
+A free watch face, glance and app for Garmin watches that tick down to the GTA VI release on 19 November 2026: days, hours, minutes and seconds, with a quiet always-on mode on AMOLED screens. Builds for 123 watch models, a landing page with a per-watch installer, and both apps in the Connect IQ Store.
+
+`Monkey C` `Connect IQ` `GitHub Pages`
+
+Site: [gta6-garmin.belidor.cc](https://gta6-garmin.belidor.cc). Source: [Belidor/gta6-countdown](https://github.com/Belidor/gta6-countdown), MIT.
 
 ### [Search on Kupujemprodajem](https://chromewebstore.google.com/detail/search-on-kupujemprodajem/eidkdejdckeneilcfpojkejjnnjnhkgb)
 
