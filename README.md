@@ -46,6 +46,16 @@ A Chrome extension for life in Serbia: select any text on any page and search it
 
 Install: [Chrome Web Store](https://chromewebstore.google.com/detail/search-on-kupujemprodajem/eidkdejdckeneilcfpojkejjnnjnhkgb).
 
+### [pawsight](https://github.com/Belidor/pawsight)
+
+<a href="https://github.com/Belidor/pawsight"><img src="assets/pawsight.jpg" width="100%" alt="The pawsight banner: a dog drinking from its water bowl, with the boxes and zones pawsight draws around the dog and both bowls"></a>
+
+The camera that watches my dog, now open source. An IP camera feeds a YOLO detector, zones anchored to the bowls count every visit to the water and the food, a local vision model tells drinking from eating, and Telegram gets short reports. A pan/tilt camera follows the dog and comes back to the bowls. Runs on one Mac or Linux box, no cloud, no open ports; one install script.
+
+`Python` `YOLO` `Ollama` `go2rtc` `MQTT` `Telegram`
+
+Source: [Belidor/pawsight](https://github.com/Belidor/pawsight), AGPL-3.0.
+
 ## More projects
 
 The source of these is private. `live` means working and in use, `beta` means open to a small group of testers, `in progress` means still being built.
@@ -55,7 +65,6 @@ The source of these is private. `live` means working and in use, `beta` means op
 | Teachy | A workspace for private tutors: a lesson calendar with recurring series, student balances and payments, homework and income analytics. Students get a Telegram Mini App. Tutors join by invite. | `beta` |
 | [Cossacks in the browser](https://cossacks.belidor.cc) | The 2002 strategy game in the browser through js-dos. The 610 MB bundle streams from a private Cloudflare R2 bucket behind a hard daily cap, so the bill stays at zero. | `live` |
 | [Need for Speed: Underground in the browser](https://nfsu.belidor.cc) | The 2003 street racer in the browser: BottleShip runs the Windows game in WebAssembly with WebGPU, Classic and HD builds, cloud saves behind a personal code. | `live` |
-| Dog cam | Watches my dog through an IP camera. YOLO finds her, zones around the bowls and the sofa turn tracks into events, a local vision model describes them, Telegram gets the alerts. Runs on one Mac, no cloud. | `live` |
 | Belgrade weather bot | A daily Telegram post with the water temperature at Ada Ciganlija, air, wind and UV, cross-checked across several sources. | `live` |
 | Homework | A teacher uploads an HTML assignment and gets a link. Students fill it in on the page; the teacher sees each page as it was filled in. | `live` |
 | Lotto for Telegram | Classic Russian lotto as a Telegram Mini App, with rooms for seven players and automatic draws. | `live` |
