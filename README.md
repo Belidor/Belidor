@@ -7,7 +7,7 @@
 
 Over ten years of test automation for web, mobile and APIs. On the side I build small systems that watch things and report back: a camera that keeps an eye on my dog, a voice assistant for the family smart speaker, a bot that posts the lake temperature every morning.
 
-Most of that code is private, so this page lists what I have built. Work history is on [LinkedIn](https://www.linkedin.com/in/akupratsevich/).
+Most of that code is private, so this page lists what I have built. My site is [belidor.cc](https://belidor.cc); work history is on [LinkedIn](https://www.linkedin.com/in/akupratsevich/).
 
 ## Live projects
 
@@ -46,20 +46,22 @@ A Chrome extension for life in Serbia: select any text on any page and search it
 
 Install: [Chrome Web Store](https://chromewebstore.google.com/detail/search-on-kupujemprodajem/eidkdejdckeneilcfpojkejjnnjnhkgb).
 
-## Private projects
+## More projects
 
-The source of these is private. Five run at home every day; three are finished and wait for a reason to ship.
+The source of these is private. `live` means working and in use, `beta` means open to a small group of testers, `in progress` means still being built.
 
 | Project | What it does | Status |
 | --- | --- | --- |
-| Dog cam | Watches my dog through an IP camera. YOLO finds her, zones around the bowls and the sofa turn tracks into events, a local vision model describes them, Telegram gets the alerts. Runs on one Mac, no cloud. | `in use` |
-| Family assistant for Alice | A private skill for the Yandex smart speaker. Answers with Claude, keeps the family calendar and shopping list, says when the next bus leaves. | `in use` |
-| Belgrade weather bot | A daily Telegram post with the water temperature at Ada Ciganlija, air, wind and UV, cross-checked across several sources. | `in use` |
-| Homework | A teacher uploads an HTML assignment and gets a link. Students fill it in on the page; the teacher sees each page as it was filled in. | `in use` |
-| Claude Code mods | Plugins for my own workflow: continue a task after the usage limit resets, check replies against Simplified Technical English, drive Android devices for test runs. | `in use` |
-| Cossacks in the browser | The 2002 strategy game in the browser through js-dos. The 610 MB bundle streams from a private Cloudflare R2 bucket behind a hard daily cap, so the bill stays at zero. | `built` |
-| Lotto for Telegram | Classic Russian lotto as a Telegram Mini App, with rooms for seven players and automatic draws. | `built` |
-| Photo Cleaner | An iOS app that turns clearing the camera roll into a swipe deck. Nothing is deleted until you confirm. | `built` |
+| Teachy | A workspace for private tutors: a lesson calendar with recurring series, student balances and payments, homework and income analytics. Students get a Telegram Mini App. Tutors join by invite. | `beta` |
+| [Cossacks in the browser](https://cossacks.belidor.cc) | The 2002 strategy game in the browser through js-dos. The 610 MB bundle streams from a private Cloudflare R2 bucket behind a hard daily cap, so the bill stays at zero. | `live` |
+| [Need for Speed: Underground in the browser](https://nfsu.belidor.cc) | The 2003 street racer in the browser: BottleShip runs the Windows game in WebAssembly with WebGPU, Classic and HD builds, cloud saves behind a personal code. | `live` |
+| Dog cam | Watches my dog through an IP camera. YOLO finds her, zones around the bowls and the sofa turn tracks into events, a local vision model describes them, Telegram gets the alerts. Runs on one Mac, no cloud. | `live` |
+| Belgrade weather bot | A daily Telegram post with the water temperature at Ada Ciganlija, air, wind and UV, cross-checked across several sources. | `live` |
+| Homework | A teacher uploads an HTML assignment and gets a link. Students fill it in on the page; the teacher sees each page as it was filled in. | `live` |
+| Lotto for Telegram | Classic Russian lotto as a Telegram Mini App, with rooms for seven players and automatic draws. | `live` |
+| Photo Cleaner | An iOS app that turns clearing the camera roll into a swipe deck. Nothing is deleted until you confirm. | `beta` |
+| Family assistant for Alice | A private skill for the Yandex smart speaker. Answers with Claude, keeps the family calendar and shopping list, says when the next bus leaves. | `in progress` |
+| Claude Code mods | Plugins for my own workflow: continue a task after the usage limit resets, check replies against Simplified Technical English, drive Android devices for test runs. | `in progress` |
 
 ## Toolbox
 

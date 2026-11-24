@@ -134,13 +134,13 @@ ROWS_WIDE = [
     ("automation", "web, iOS, Android and API suites in four frameworks"),
     ("releases", "Playwright e2e coverage from 0% to 90%, wired into CI"),
     ("people", "led a QA team of five, took interns to full-time hires"),
-    ("side work", "11 projects built, 5 in daily use, 3 public"),
+    ("side work", "13 projects: 9 live, 2 in beta, 2 in progress"),
 ]
 ROWS_NARROW = [
     ("automation", "web, iOS, Android, API"),
     ("releases", "e2e coverage 0% to 90%"),
     ("people", "led a QA team of five"),
-    ("side work", "11 built, 5 in daily use"),
+    ("side work", "13 projects, 9 live"),
 ]
 
 # One orchestrated moment: the self-test prints line by line, like a terminal.
