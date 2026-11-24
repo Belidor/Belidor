@@ -6,9 +6,10 @@ device: GitHub shows SVGs through <img>, which cannot load web fonts.
     python3 -m venv .venv && .venv/bin/pip install uharfbuzz
     .venv/bin/python tools/build.py
 
-Fonts (OFL, from github.com/google/fonts) go to tools/fonts/:
-    Archivo[wdth,wght].ttf  -> Archivo.ttf
-    SplineSansMono[wght].ttf -> SplineSansMono.ttf
+Fonts (OFL, from github.com/google/fonts) go to tools/fonts/, the same as belidor.cc:
+    ofl/unbounded/Unbounded[wght].ttf         -> Unbounded.ttf
+    ofl/golostext/GolosText[wght].ttf         -> GolosText.ttf
+    ofl/jetbrainsmono/JetBrainsMono[wght].ttf -> JetBrainsMono.ttf
 """
 
 from pathlib import Path
@@ -19,21 +20,15 @@ ROOT = Path(__file__).resolve().parent.parent
 FONTS = Path(__file__).resolve().parent / "fonts"
 OUT = ROOT / "assets"
 
-# Colors: the same tokens as the personal site.
-THEMES = {
-    "light": dict(
-        ink="#17221C", muted="#5E6C64", line="#D3DBD1", surface="#FFFFFF",
-        tile="#EEF1EC", pass_="#1C7F47", pass_soft="#DDEFE3", select="#BDD6FF",
-        panel="#17221C", panel_fg="#E9EFE8", panel_muted="#8A9A90", panel_pass="#6FD39A",
-        panel_line="#17221C",
-    ),
-    "dark": dict(
-        ink="#E6ECE6", muted="#93A198", line="#273129", surface="#161D19",
-        tile="#121915", pass_="#56C987", pass_soft="#183425", select="#2C4D7F",
-        panel="#141B17", panel_fg="#E6ECE6", panel_muted="#7E8C83", panel_pass="#56C987",
-        panel_line="#273129",
-    ),
-}
+# Colors: the "Brass" palette of belidor.cc. The site has one look, so the light and dark
+# variants are the same: a navy card that reads on both GitHub themes.
+SITE = dict(
+    card="#0B1733", ink="#EEF0F5", muted="#A0AAC4", line="#233660", surface="#112146",
+    tile="#15284F", pass_="#E2B85C", pass_soft="#1C2F5C", select="#2E4A8C",
+    panel="#071027", panel_fg="#F3F0E6", panel_muted="#8D97B3", panel_pass="#E2B85C",
+    panel_line="#3A4E7E",
+)
+THEMES = {"light": SITE, "dark": SITE}
 
 
 class Pen:
@@ -102,12 +97,12 @@ class Face:
         return "".join(pen.parts)
 
 
-DISPLAY = Face("Archivo.ttf", wdth=116, wght=780)
-ROLE = Face("Archivo.ttf", wdth=100, wght=500)
-UI = Face("Archivo.ttf", wdth=100, wght=420)
-UI_BOLD = Face("Archivo.ttf", wdth=100, wght=560)
-MONO = Face("SplineSansMono.ttf", wght=400)
-MONO_BOLD = Face("SplineSansMono.ttf", wght=520)
+DISPLAY = Face("Unbounded.ttf", wght=700)
+ROLE = Face("GolosText.ttf", wght=500)
+UI = Face("GolosText.ttf", wght=420)
+UI_BOLD = Face("GolosText.ttf", wght=600)
+MONO = Face("JetBrainsMono.ttf", wght=400)
+MONO_BOLD = Face("JetBrainsMono.ttf", wght=600)
 
 
 def text(face, s, x, y, size, fill, cls="", track=0.0):
@@ -160,70 +155,73 @@ ANIM = """
 def banner(theme, narrow):
     t = THEMES[theme]
     W = 720 if narrow else 1280
+    P = 40 if narrow else 56          # card padding
+    IW = W - 2 * P                    # inner width
     out = []
 
     # Name.
-    name_size = 112 if narrow else 104
-    track = -0.025
-    y = name_size * 0.80
+    name_size = 96 if narrow else 88
+    track = -0.03
+    y = P + name_size * 0.78
     if narrow:
         for i, word in enumerate(["Artem", "Kupratsevich"]):
             size = name_size
-            while DISPLAY.width(word, size, track) > W - 4:
+            while DISPLAY.width(word, size, track) > IW:
                 size -= 1
-            out.append(text(DISPLAY, word, 0, y + i * name_size * 0.98, size, t["ink"], track=track))
-        y += name_size * 0.98
+            out.append(text(DISPLAY, word, P, y + i * name_size * 1.04, size, t["ink"], track=track))
+        y += name_size * 1.04
     else:
         size = name_size
-        while DISPLAY.width("Artem Kupratsevich", size, track) > W - 4:
+        while DISPLAY.width("Artem Kupratsevich", size, track) > IW:
             size -= 1
-        out.append(text(DISPLAY, "Artem Kupratsevich", 0, y, size, t["ink"], track=track))
+        out.append(text(DISPLAY, "Artem Kupratsevich", P, y, size, t["ink"], track=track))
 
     # Role.
     role = "QA Engineer working remotely from Belgrade, Serbia."
     role_size = 34 if narrow else 30
     y += role_size * 1.9
-    for line in wrap(ROLE, role, role_size, W - 4):
-        out.append(text(ROLE, line, 0, y, role_size, t["ink"], track=-0.01))
+    for line in wrap(ROLE, role, role_size, IW):
+        out.append(text(ROLE, line, P, y, role_size, t["ink"], track=-0.01))
         y += role_size * 1.3
     y += 22 if narrow else 18
 
     # Self-test panel.
     rows = ROWS_NARROW if narrow else ROWS_WIDE
-    ms = 26 if narrow else 22
+    ms = 24 if narrow else 22
     pad = 32 if narrow else 36
     lh = ms * 1.7
     ch = MONO.width("0", ms)
     top = y
     rect_at = len(out)
     by = top + pad + ms * 0.8
-    out.append(text(MONO, "$ ", pad, by, ms, t["panel_muted"]))
+    out.append(text(MONO, "$ ", P + pad, by, ms, t["panel_muted"]))
     cmd = "artem --self-test"
-    out.append(text(MONO_BOLD, cmd, pad + 2 * ch, by, ms, t["panel_fg"]))
-    cx = pad + (2 + len(cmd) + 1) * ch
+    out.append(text(MONO_BOLD, cmd, P + pad + 2 * ch, by, ms, t["panel_fg"]))
+    cx = P + pad + (2 + len(cmd) + 1) * ch
     out.append(
         f'<rect class="caret" x="{cx:.1f}" y="{by - ms * 0.78:.1f}" width="{ch * 0.9:.1f}" '
         f'height="{ms * 0.98:.1f}" fill="{t["panel_fg"]}"/>'
     )
     by += lh * 0.55
-    key_x = pad + 6 * ch
+    key_x = P + pad + 6 * ch
     val_x = key_x + 12 * ch
     for i, (k, v) in enumerate(rows, 1):
         by += lh
         out.append(f'<g class="o o{i}">')
-        out.append(text(MONO_BOLD, "pass", pad, by, ms, t["panel_pass"]))
+        out.append(text(MONO_BOLD, "pass", P + pad, by, ms, t["panel_pass"]))
         out.append(text(MONO, k, key_x, by, ms, t["panel_muted"]))
         out.append(text(MONO, v, val_x, by, ms, t["panel_fg"]))
         out.append("</g>")
     by += lh * 1.4
-    out.append(f'<g class="o o5">{text(MONO, "4 passed, 0 failed", pad, by, ms, t["panel_pass"])}</g>')
+    out.append(f'<g class="o o5">{text(MONO, "4 passed, 0 failed", P + pad, by, ms, t["panel_pass"])}</g>')
     panel_h = by + ms * 0.25 + pad - top
     out.insert(
         rect_at,
-        f'<rect x="0.5" y="{top + 0.5:.1f}" width="{W - 1}" height="{panel_h:.1f}" rx="16" '
+        f'<rect x="{P + 0.5}" y="{top + 0.5:.1f}" width="{IW - 1}" height="{panel_h:.1f}" rx="14" '
         f'fill="{t["panel"]}" stroke="{t["panel_line"]}"/>',
     )
-    H = top + panel_h + 2
+    H = top + panel_h + P
+    out.insert(0, f'<rect width="{W}" height="{H:.0f}" rx="22" fill="{t["card"]}"/>')
 
     rows_text = "; ".join(f"pass {k}: {v}" for k, v in rows)
     title = f"Artem Kupratsevich. {role} Self-test: {rows_text}. 4 passed, 0 failed."
@@ -270,7 +268,7 @@ def menu_mock(theme):
     mh = row * len(items) + 24
     out.append(
         f'<rect x="{mx + 4:.1f}" y="{my + 10:.1f}" width="{mw}" height="{mh}" rx="14" '
-        f'fill="#000" opacity="{0.10 if theme == "light" else 0.35}"/>'
+        f'fill="#000" opacity="0.35"/>'
     )
     out.append(
         f'<rect x="{mx:.1f}" y="{my:.1f}" width="{mw}" height="{mh}" rx="14" '
